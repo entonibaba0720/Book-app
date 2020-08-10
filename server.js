@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const app = express();
+const router = express.Router();
 const expressLayouts = require("express-ejs-layouts");
 const bodyParser = require("body-parser");
 
