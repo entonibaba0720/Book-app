@@ -7,17 +7,15 @@ const app = express();
 const expressLayouts = require("express-ejs-layouts");
 const bodyParser = require("body-parser");
 
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 /* ROUTES */
+app.set("views", __dirname + "/views");
+app.set("layout", "layouts/layout");
 const indexRouter = require("./routes/index");
 app.use("/", indexRouter);
 
 const authorRouter = require("./routes/authors");
 app.use("/authors", authorRouter);
-
-app.set("views", __dirname + "/views");
-app.set("layout", "layouts/layout");
-
-app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 
 app.set("view engine", "ejs");
 app.use(expressLayouts);
